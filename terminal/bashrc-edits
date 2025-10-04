@@ -1,0 +1,279 @@
+###################################################################
+# History settings (Also, see HISTSIZE and HISTFILESIZE)
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+HISTTIMEFORMAT="%F %T "  # Outputs: YYYY-MM-DD HH:MM:SS
+HISTIGNORE="&:ls:ll:la:history:exit:pwd:clear"
+
+PROMPT_DIRTRIM=1
+
+#if [ "$color_prompt" = yes ]; then
+#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+#else
+#    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+#fi
+#unset color_prompt force_color_prompt
+
+# REPLACED BY
+parse_git_branch() {
+    git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\$ '
+
+
+
+# MY CUSTOM ALIASES
+#  cfind() {
+#      local start_dir="${1:-.}"  # Use provided directory or current directory
+#      local selected_files=$(find "$start_dir" -type f | fzf -m --preview="less {}")
+#      [ -n "$selected_files" ] && code $selected_files || unset selected_files
+#  }
+
+# cfind() {
+#     local start_dir="${1:-.}"  # Use provided directory or current directory
+#     local selected_files
+
+#     selected_files=$(find "$start_dir" -type f | fzf -m --preview="batcat --color=always --style=plain {}")
+
+#     [ -n "$selected_files" ] && code $selected_files || unset selected_files
+# }
+
+# This one shows git branch and file status
+cfind() {
+    local start_dir="${1:-.}"
+    local file_pattern="${2:-*}"
+    local editor="${CFIND_EDITOR:-code}"
+
+    for cmd in find fzf batcat "$editor" git; do
+        if ! command -v "$cmd" &>/dev/null; then
+            echo "Error: $cmd is not installed" >&2
+            return 1
+        fi
+    done
+
+    if [ ! -d "$start_dir" ]; then
+        echo "Error: '$start_dir' is not a directory" >&2
+        return 1
+    fi
+
+    local selected_files
+    selected_files=$(find "$start_dir" -type f -name "$file_pattern" 2>/dev/null | fzf -m \
+        --preview='
+            file={}
+            if git -C "$(dirname "$file")" rev-parse 2>/dev/null; then
+                branch=$(git -C "$(dirname "$file")" rev-parse --abbrev-ref HEAD 2>/dev/null || echo "Detached HEAD")
+                status=$(git -C "$(dirname "$file")" status --porcelain "$file" 2>/dev/null | cut -c1-2)
+                [ -n "$status" ] && status=" ($status)" || status=""
+            else
+                branch="Not in Git"
+                status=""
+            fi
+            last_edited=$(stat -c "%y" "$file" 2>/dev/null || stat -f "%Sm" "$file")
+            file_size=$(ls -lh "$file" | awk "{print \$5}")
+            permissions=$(ls -l "$file" | awk "{print \$1}")
+            echo -e "\033[1;34mFile:\033[0m $(basename "$file")"
+            echo -e "\033[1;32mGit Branch:\033[0m $branch$status"
+            echo -e "\033[1;33mLast Edited:\033[0m $last_edited"
+            echo -e "\033[1;36mSize:\033[0m $file_size"
+            echo -e "\033[1;37mPermissions:\033[0m $permissions"
+            echo -e "\033[1;35m--- Content Preview ---\033[0m"
+            batcat --color=always --style=numbers --line-range=:500 "$file"
+        ' \
+        --preview-window=right:60%:wrap \
+        --bind='ctrl-y:execute-silent(echo {} | xclip -selection clipboard)+abort' \
+        --bind='ctrl-p:toggle-preview' \
+        --bind='ctrl-d:execute-silent(echo "cd \"$(dirname {})\"" > /tmp/cfind_cd_command)+abort')
+        
+
+    if [ -n "$selected_files" ]; then
+        echo "$selected_files" | tr '\n' ' ' | xargs -r "$editor"
+    fi
+
+    if [ -f /tmp/cfind_cd_command ]; then
+        source /tmp/cfind_cd_command
+        rm /tmp/cfind_cd_command
+    fi
+}
+
+alias cf='cfind'
+
+
+# cfind() {
+#     local start_dir="${1:-.}"
+#     local file_pattern="${2:-*}"
+#     local editor="${CFIND_EDITOR:-code}"
+
+#     for cmd in find fzf batcat "$editor" git; do
+#         if ! command -v "$cmd" &>/dev/null; then
+#             echo "Error: $cmd is not installed" >&2
+#             return 1
+#         fi
+#     done
+
+#     if [ ! -d "$start_dir" ]; then
+#         echo "Error: '$start_dir' is not a directory" >&2
+#         return 1
+#     fi
+
+#     local selected_files
+#     selected_files=$(find "$start_dir" -type f -name "$file_pattern" 2>/dev/null | fzf -m \
+#         --preview='
+#             file={}
+#             if git -C "$(dirname "$file")" rev-parse 2>/dev/null; then
+#                 branch=$(git -C "$(dirname "$file")" rev-parse --abbrev-ref HEAD 2>/dev/null || echo "Detached HEAD")
+#                 status=$(git -C "$(dirname "$file")" status --porcelain "$file" 2>/dev/null | cut -c1-2)
+#                 [ -n "$status" ] && status=" ($status)" || status=""
+#             else
+#                 branch="Not in Git"
+#                 status=""
+#             fi
+#             last_edited=$(stat -c "%y" "$file" 2>/dev/null || stat -f "%Sm" "$file")
+#             file_size=$(ls -lh "$file" | awk "{print \$5}")
+#             permissions=$(ls -l "$file" | awk "{print \$1}")
+#             echo -e "\033[1;34mFile:\033[0m $(basename "$file")"
+#             echo -e "\033[1;32mGit Branch:\033[0m $branch$status"
+#             echo -e "\033[1;33mLast Edited:\033[0m $last_edited"
+#             echo -e "\033[1;36mSize:\033[0m $file_size"
+#             echo -e "\033[1;37mPermissions:\033[0m $permissions"
+#             echo -e "\033[1;35m--- Content Preview ---\033[0m"
+#             batcat --color=always --style=numbers --line-range=:500 "$file"
+#         ' \
+#         --preview-window=right:60%:wrap \
+#         --bind='ctrl-y:execute-silent(echo {} | xclip -selection clipboard)+abort' \
+#         --bind='ctrl-p:toggle-preview')
+#         # --header='Select files (Ctrl-Y: copy path, Ctrl-P: toggle preview, Tab: multi-select)')
+
+#     if [ -n "$selected_files" ]; then
+#         echo "$selected_files" | tr '\n' ' ' | xargs -r "$editor"
+#     fi
+# }
+
+# alias cf='cfind'
+
+
+
+# Shortcuts for common commands
+alias ll='ls -larth --color=auto'  # Detailed dir listing with human-readable sizes
+# alias ..='cd ..'                 # Go up one directory
+# alias .. ..='cd ../..'             # Go up two directories
+alias grep='grep --color=auto'   # Colored grep output
+alias bashreload='source ~/.bashrc'  # Reload .bashrc without restarting terminal
+
+# Git shortcuts
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git push'
+alias gl='git log --oneline --graph --decorate'
+alias gitreset='git reset --soft HEAD~1'
+
+# Batcat
+alias cat='batcat --style=plain'
+
+# Jump to dirs with partial matches using fzf (install it first):
+cdf() {
+    local dir
+    dir=$(find "${1:-.}" -type d 2>/dev/null | fzf +m) && cd "$dir"
+}
+
+# Add a quick system health check:
+syscheck() {
+    echo "CPU: $(top -bn1 | grep "Cpu(s)" | awk '{print $2}')% used"
+    echo "Mem: $(free -h | awk '/^Mem:/ {print $3 "/" $2}')"
+    echo "Disk: $(df -h / | awk 'NR==2 {print $5}')"
+}
+
+
+# Save current directory as a bookmark
+bookmark() {
+    local bookmark_name="${1:-default}"
+    # Only replace specific invalid characters (e.g., -, space) with underscores
+    bookmark_name=$(echo "$bookmark_name" | tr ' -' '_')
+    if [[ -z $bookmark_name ]]; then
+        echo "Error: Bookmark name cannot be empty" >&2
+        return 1
+    fi
+    # Check if the name is a valid Bash identifier
+    if ! [[ $bookmark_name =~ ^[a-zA-Z_][a-zA-Z0-9_]*$ ]]; then
+        echo "Error: '$bookmark_name' is not a valid bookmark name (use letters, numbers, or underscores, starting with a letter or underscore)" >&2
+        return 1
+    fi
+    local var_name="DIR_$bookmark_name"
+    printf 'export %s="%s"\n' "$var_name" "$(pwd)" >> ~/.bash_bookmarks
+    source ~/.bash_bookmarks
+    echo "Bookmark '$bookmark_name' set to $(pwd)"
+}
+
+# List all bookmarks
+list_bookmarks() {
+    if [[ -f ~/.bash_bookmarks ]]; then
+        grep 'export DIR_' ~/.bash_bookmarks | sed 's/export DIR_\([^=]*\)=["'"'"']\(.*\)["'"'"']/\1: \2/'
+    else
+        echo "No bookmarks found"
+    fi
+}
+
+# Go to a bookmark
+go() {
+    local bookmark_name="${1:-default}"
+    bookmark_name=$(echo "$bookmark_name" | tr ' -' '_')
+    local var_name="DIR_$bookmark_name"
+    if [[ -n ${!var_name} ]]; then
+        cd "${!var_name}" || {
+            echo "Error: Directory '${!var_name}' not accessible" >&2
+            return 1
+        }
+        echo "Moved to bookmark '$bookmark_name': $(pwd)"
+    else
+        echo "Error: Bookmark '$bookmark_name' not found" >&2
+        return 1
+    fi
+}
+
+# Load bookmarks on startup
+[[ -f ~/.bash_bookmarks ]] && source ~/.bash_bookmarks
+
+
+# Extract any archive with one command
+extract() {
+    if [[ -f $1 ]]; then
+        case $1 in
+            *.tar.bz2) tar xjf "$1" ;;
+            *.tar.gz)  tar xzf "$1" ;;
+            *.bz2)     bunzip2 "$1" ;;
+            *.rar)     unrar x "$1" ;;
+            *.gz)      gunzip "$1"  ;;
+            *.tar)     tar xf "$1"  ;;
+            *.tbz2)    tar xjf "$1" ;;
+            *.tgz)     tar xzf "$1" ;;
+            *.zip)     unzip "$1"   ;;
+            *.Z)       uncompress "$1" ;;
+            *.7z)      7z x "$1"    ;;
+            *)         echo "'$1' cannot be extracted" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+# A simple countdown timer
+timer() {
+    local seconds="${1:-60}"
+    local end=$((SECONDS + seconds))
+    while (( SECONDS < end )); do
+        printf "\rTime left: %02d:%02d" $(( (end - SECONDS) / 60 )) $(( (end - SECONDS) % 60 ))
+        sleep 1
+    done
+    echo -e "\nTime's up!"
+}
+
+# Search command history with fzf
+fh() {
+    local cmd
+    cmd=$(history | fzf --tac --no-sort | awk '{$1=""; sub(/^ /, ""); print $0}')
+    if [[ -n $cmd ]]; then
+        echo "Running: $cmd"
+        eval "$cmd"
+    fi
+}
+
+###################################################################

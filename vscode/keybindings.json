@@ -1,0 +1,23 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+shift+right",
+        "command": "deleteAllRight"
+    },
+    {
+        "key": "ctrl+shift+left",
+        "command": "deleteAllLeft"
+    },
+    {
+        "key": "ctrl+[Backquote]",
+        "command": "workbench.action.toggleActivityBarVisibility"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "cursorLineEnd"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "cursorLineStart"
+    }
+]

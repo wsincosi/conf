@@ -1,0 +1,69 @@
+{
+    // Zen Mode
+    "zenMode.centerLayout": true,
+    "zenMode.fullScreen": true,
+
+    // Disable telemetry
+    "telemetry.telemetryLevel": "off",
+
+    // Window
+    "window.menuBarVisibility": "toggle",
+    "window.commandCenter": false,
+    "window.customTitleBarVisibility": "never",
+
+    // Workbench
+    "workbench.colorTheme": "Default Light Modern",
+    "workbench.editorAssociations": {
+        "*.pdf": "latex-workshop-pdf-hook"
+    },
+    "workbench.statusBar.visible": false,
+    "workbench.tree.indent": 20,
+    "workbench.editor.showTabs": "multiple",
+    "workbench.layoutControl.enabled": false,
+
+    // Editor
+    "editor.minimap.enabled": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.horizontalScrollbarSize": 0,
+    "editor.scrollbar.verticalScrollbarSize": 0,
+    "editor.fontFamily": "Source Code Pro",
+    "editor.renderWhitespace": "none",
+    "editor.lineNumbers": "off",
+    "editor.cursorStyle": "block",
+
+    // Formatting
+    "ruff.importStrategy": "useBundled",
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "always",
+        "source.fixAll": "always"
+    },
+    //"files.autoSave": "onFocusChange",
+
+    // Docstring format
+    "autoDocstring.docstringFormat": "google-notypes",
+
+    // Terminal
+    "terminal.integrated.gpuAcceleration": "on",
+    "terminal.integrated.enableImages": true,
+
+    // CMake
+    "cmake.configureOnOpen": false,
+
+    // Python
+    "python.defaultInterpreterPath": "/home/matlev/venv",
+    
+    // Git
+    "git.openRepositoryInParentFolders": "always",
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "yaml.schemas": {
+        "file:///home/matlev/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
+    },
+}
