@@ -1,0 +1,87 @@
+PROJECT CREATION
+-----------------------------------------------------
+uv init                       # Initialize a new project in the current directory
+uv init --package             # Create an installable app project (with src layout)
+uv init --lib                 # Create a library project (no entrypoint)
+uv add <pkg>                  # Add a dependency
+uv remove <pkg>               # Remove a dependency
+
+WORKSPACES
+-----------------------------------------------------
+uv init --package packages/foo     # Create a workspace member (auto-added to workspace)
+uv lock                            # Create or update the shared lockfile
+uv sync                            # Install dependencies for the entire workspace
+uv run --project <path> <cmd>      # Run command for specific workspace member
+uv run --package <name> <script>   # Run package entrypoint
+uv tree                            # Show dependency tree
+
+RUNNING & TESTING
+-----------------------------------------------------
+uv run <cmd>                            # Run a command in uv environment (e.g., pytest)
+uv run python                           # Start Python REPL
+uv run --project packages/core pytest   # Run tests for one member
+uv test                                 # Shortcut for running tests
+
+DEPENDENCIES & ENVIRONMENTS
+-----------------------------------------------------
+uv add <pkg>                       # Add dependency
+uv add --dev <pkg>                 # Add dev dependency
+uv remove <pkg>                    # Remove dependency
+uv update                          # Upgrade dependencies to latest compatible versions
+uv lock --upgrade                  # Re-lock with latest versions
+uv sync --frozen                   # Install exactly as locked (no re-resolution)
+
+INSPECTING
+-----------------------------------------------------
+uv info                            # Show project/environment info
+uv info --project packages/core    # Info for a workspace member
+uv tree                            # Show dependency graph
+uv python list                     # List available interpreters
+uv python pin 3.12                 # Pin specific Python version
+
+UTILITY
+-----------------------------------------------------
+uv run --with <pkg> <cmd>          # Run with a temporary dependency
+uv cache clean                     # Clear uv cache
+uv export requirements.txt         # Export lockfile as requirements.txt
+uv publish                         # Publish package to PyPI
+
+WORKSPACE MODEL
+-----------------------------------------------------
+- One shared lockfile (uv.lock)
+- One shared virtual environment
+- Each member has its own pyproject.toml
+- Root [tool.uv.sources] defines workspace linking
+- Conflicting deps between members → use path deps or separate projects
+
+Typical Workflow Example
+-----------------------------------------------------
+uv init --package my-workspace
+cd my-workspace
+uv init --lib packages/core
+uv init --package packages/app
+# Link app → core
+echo "[tool.uv.sources]\ncore = { workspace = true }" >> pyproject.toml
+uv --project packages/app add core
+uv lock
+uv sync
+uv run --package app app
+uv run --project packages/core pytest
+
+Common Gotchas
+-----------------------------------------------------
+- Forgot to lock after editing dependencies → uv lock
+- Want exact installs only → uv sync --frozen
+- Workspace members not linking → check [tool.uv.sources]
+- Want separate envs per member → use path deps, not workspace
+
+MUST-KNOW COMMANDS
+-----------------------------------------------------
+Create project          uv init --package / --lib
+Add dependency          uv add <pkg>
+Lock dependencies       uv lock
+Install everything      uv sync
+Run project             uv run --project packages/foo python -m foo
+Run tests               uv run pytest
+Show dependencies       uv tree
+Update dependencies     uv update
