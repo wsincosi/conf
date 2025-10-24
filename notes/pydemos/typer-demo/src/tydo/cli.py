@@ -78,10 +78,100 @@ def add(
         )
 
 
+@app.command(name="list")
+def list_all() -> None:
+    """List all to-dos."""
+    todoer = get_todoer()
+    todo_list = todoer.get_todo_list()
+    if len(todo_list) == 0:
+        typer.secho("There are no tasks in the to-do list yet", fg=typer.colors.RED)
+        raise typer.Exit()
+    typer.secho("\nto-do list:\n", fg=typer.colors.BLUE, bold=True)
+    columns = (
+        "ID.  ",
+        "| Priority  ",
+        "| Done  ",
+        "| Description  ",
+    )
+    headers = "".join(columns)
+    typer.secho(headers, fg=typer.colors.BLUE, bold=True)
+    typer.secho("-" * len(headers), fg=typer.colors.BLUE)
+    for id, todo in enumerate(todo_list, 1):
+        desc, priority, done = todo.values()
+        typer.secho(
+            f"{id}{(len(columns[0]) - len(str(id))) * ' '}"
+            f"| ({priority}){(len(columns[1]) - len(str(priority)) - 4) * ' '}"
+            f"| {done}{(len(columns[2]) - len(str(done)) - 2) * ' '}"
+            f"| {desc}",
+            fg=typer.colors.BLUE,
+        )
+    typer.secho("-" * len(headers) + "\n", fg=typer.colors.BLUE)
+
+
 def _version_callback(value: bool) -> None:
     if value:
         typer.echo(f"{__app_name__} version: {__version__}")
         raise typer.Exit()
+
+
+@app.command(name="complete")
+def set_done(
+    todo_id: Annotated[int, typer.Argument(..., help="The to-do ID to update")],
+) -> None:
+    """Complete a to-do by setting it as done using to-do ID"""
+    todoer = get_todoer()
+    todo, error = todoer.set_done(todo_id)
+    if error:
+        typer.secho(f"Completing to-do #{todo_id} failed with {ERRORS[error]}")
+        raise typer.Exit(1)
+    else:
+        typer.secho(
+            f"""to-do #{todo_id} {todo["Description"]} completed!""",
+            fg=typer.colors.GREEN,
+        )
+
+
+@app.command(name="delete")
+def remove(
+    todo_id: Annotated[int, typer.Argument(..., help="The to-do ID to remove")],
+    force: Annotated[
+        bool,
+        typer.Option(
+            "--force",
+            "-f",
+            is_eager=True,
+            help="Force delete to-do without confirmation",
+        ),
+    ] = False,
+) -> None:
+    """Removes a to-do using its to-do ID"""
+    todoer = get_todoer()
+
+    def _remove():
+        todo, error = todoer.remove(todo_id)
+        if error:
+            typer.secho(
+                f"Removing to-do #{todo_id} failed with {ERRORS[error]}",
+                fg=typer.colors.RED,
+            )
+            typer.Exit(1)
+        else:
+            typer.secho(f"""to-do #{todo_id}: {todo["Description"]} was removed""")
+
+    if force:
+        _remove()
+    else:
+        todo_list = todoer.get_todo_list()
+        try:
+            todo = todo_list[todo_id - 1]
+        except IndexError:
+            typer.secho("Invalid to-do ID", fg=typer.colors.RED)
+            raise typer.Exit(1)
+        delete = typer.confirm(f"Delete to-do #{todo_id}: {todo['Description']}")
+        if delete:
+            _remove()
+        else:
+            typer.secho("Operation cancelled")
 
 
 @app.callback()
