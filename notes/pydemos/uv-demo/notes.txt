@@ -1,0 +1,42 @@
+uv self update
+uv init rpcats
+uv.lock file - cross platform lockfile (push it)
+pyproject.toml - project metadata
+.venv/ - auto-managed venv
+
+uv pip list
+uv add pytest --dev
+
+uv build
+
+uv init --package / --no-package
+uv init --app / --lib
+
+
+
+pyproject.toml v1:
+[project]
+name = "rpcats"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "requests>=2.32.5",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+]
+
+[project.scripts]
+#rpcats = "rpcats.cli:main"
+# catinfo cmd name (module main, function main)
+catinfo = "main:main"
+# can have multiple scripts
+# ...
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

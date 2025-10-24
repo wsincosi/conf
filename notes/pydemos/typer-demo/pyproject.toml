@@ -1,0 +1,16 @@
+[project]
+name = "tydo"
+version = "0.1.0"
+description = "Typer demo"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "typer>=0.20.0",
+]
+
+[project.scripts] # Entry point for the command-line interface
+tydo = "tydo.__main__:main"
+
+[build-system]
+requires = ["uv_build>=0.9.4,<0.10.0"]
+build-backend = "uv_build"
