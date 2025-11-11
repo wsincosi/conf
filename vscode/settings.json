@@ -9,17 +9,59 @@
     // Window
     "window.menuBarVisibility": "toggle",
     "window.commandCenter": false,
-    "window.customTitleBarVisibility": "never",
-
-    // Workbench
-    "workbench.colorTheme": "Default Light Modern",
     "workbench.editorAssociations": {
         "*.pdf": "latex-workshop-pdf-hook"
     },
-    "workbench.statusBar.visible": false,
-    "workbench.tree.indent": 20,
-    "workbench.editor.showTabs": "multiple",
-    "workbench.layoutControl.enabled": false,
+    // "workbench.statusBar.visible": false,
+    "workbench.tree.indent": 40,
+    // "workbench.editor.showTabs": "multiple",
+    // "workbench.layoutControl.enabled": false,
+    "workbench.colorCustomizations": {
+    // "editorGroupHeader.tabsBackground": "#141414", // Background color of the tab bar
+    // "editor.background": "#141414", // Change this hex code to your desired color
+    "editor.foreground": "#000000", // Text color
+    "editorCursor.foreground": "#000000", // Cursor background color
+    // "sideBar.background": "#141414", // Sidebar background
+    // "activityBar.background": "#141414", // Activity bar (left bar)
+    // "titleBar.activeBackground": "#141414", // Top title bar
+    // "titleBar.inactiveBackground": "#141414", // Top title bar when window is
+    // "panel.background": "#141414", // Bottom panel (terminal, problems, output, etc.)
+    // "tab.activeBackground": "#262626", // Active tab background
+    // "tab.inactiveBackground": "#141414", // Inactive tab background
+    // "tab.border": "#141414", // Tab border
+    // "tab.activeBorder": "#141414", // Active tab border
+    // "tab.activeBorderTop": "#141414", // Active tab top border
+    // "tab.inactiveBorder": "#141414", // Inactive tab border
+    // "tab.hoverBackground": "#1A1A1A", // Tab hover background
+    // "tab.unfocusedHoverBackground": "#1A1A1A", // Tab hover
+    // "panel.border": "#141414", // Bottom panel border
+    // "panelTitle.activeBorder": "#007ACC", // Bottom panel title border
+    // "panelTitle.activeForeground": "#FFFFFF", // Bottom panel title text color
+    // "panelTitle.inactiveForeground": "#CCCCCC", // Bottom panel title text color when inactive
+    // "statusBar.foreground": "#FFFFFF", // Bottom status bar text color
+    // "statusBar.background": "#007ACC", // Bottom status bar background color
+    // "statusBar.noFolderBackground": "#007ACC", // Bottom status bar when no folder is opened
+    // "statusBar.debuggingBackground": "#CC6633", // Bottom status bar
+    // "statusBarItem.hoverBackground": "#005A9E", // Status bar item hover background
+    // "statusBarItem.prominentBackground": "#005A9E", // Prominent status bar item background
+    // "statusBarItem.prominentHoverBackground": "#004578", // Prominent status bar item hover background
+    // "sideBarSectionHeader.background": "#1E1E1E", // Sidebar section header background
+    // "sideBarSectionHeader.foreground": "#FFFFFF", // Sidebar section header text color
+    // "list.hoverBackground": "#2A2D2E", // List item hover background
+    // "list.activeSelectionBackground": "#094771", // Active list item background
+    // "list.activeSelectionForeground": "#FFFFFF", // Active list item text color
+    // "list.inactiveSelectionBackground": "#37373D", // Inactive list item background
+    // "list.inactiveSelectionForeground": "#FFFFFF", // Inactive list item text color
+    // "list.focusBackground": "#094771", // Focused list item background      
+    // "list.focusForeground": "#FFFFFF", // Focused list item text color
+    // "scrollbarSlider.background": "#797979", // Scrollbar slider background
+    // "scrollbarSlider.hoverBackground": "#646464", // Scrollbar slider hover background
+    // "scrollbarSlider.activeBackground": "#BFBFBF" // Scrollbar slider active background
+    },
+
+    "latex-workshop.latex.recipe.default": "latexmk",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.autoBuild.run": "onSave",
 
     // Editor
     "editor.minimap.enabled": false,
@@ -28,12 +70,13 @@
     "editor.scrollbar.vertical": "hidden",
     "editor.scrollbar.horizontalScrollbarSize": 0,
     "editor.scrollbar.verticalScrollbarSize": 0,
-    "editor.fontFamily": "Source Code Pro",
+    "editor.fontFamily": "'Ubuntu Mono', 'Courier New', monospace",
+    "editor.fontSize": 19.5,
     "editor.renderWhitespace": "none",
-    "editor.lineNumbers": "off",
+    "editor.lineNumbers": "on",
     "editor.cursorStyle": "block",
-
-    // Formatting
+    
+    // Formatting with Ruff
     "ruff.importStrategy": "useBundled",
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnPaste": false,
@@ -66,4 +109,13 @@
     "yaml.schemas": {
         "file:///home/matlev/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
     },
+    "workbench.iconTheme": "vscode-great-icons",
+    "python.analysis.typeCheckingMode": "standard",
+    "workbench.statusBar.visible": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.secondarySideBar.defaultVisibility": "visible",
+    "workbench.colorTheme": "Default Light Modern",
+    "editor.inlineSuggest.enabled": false,
+    "workbench.activityBar.location": "hidden"
+
 }
