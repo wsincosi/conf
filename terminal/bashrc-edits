@@ -201,18 +201,16 @@ fh() {
 
 
 timer() {
-  # Usage: timer 1h30m or timer 45m or timer 90
   local input=$1
   if [[ -z "$input" ]]; then
     echo "Usage: timer <duration> (e.g. 1h30m, 5m, 90)"
     return 1
   fi
 
-  # Parse input
   local total_seconds=0
   [[ $input =~ ([0-9]+)h ]] && (( total_seconds += ${BASH_REMATCH[1]} * 3600 ))
   [[ $input =~ ([0-9]+)m ]] && (( total_seconds += ${BASH_REMATCH[1]} * 60 ))
-  [[ $input =~ ^[0-9]+$ ]] && (( total_seconds = input )) # pure number = seconds
+  [[ $input =~ ^[0-9]+$ ]] && (( total_seconds = 10#$input ))
 
   if (( total_seconds == 0 )); then
     echo "Invalid time format. Try 1h30m or 45m."
@@ -221,15 +219,24 @@ timer() {
 
   echo "Timer set for $input..."
   while (( total_seconds > 0 )); do
-    printf "\r%02d:%02d:%02d remaining" $((total_seconds/3600)) $(( (total_seconds/60)%60 )) $((total_seconds%60))
+    printf "\r%02d:%02d:%02d remaining" \
+      $((total_seconds/3600)) $(((total_seconds/60)%60)) $((total_seconds%60))
     sleep 1
     (( total_seconds-- ))
   done
-  echo -e "\nTime's up!"
-  command -v notify-send &>/dev/null && notify-send "⏰ Timer done ($input)"
-  command -v paplay &>/dev/null && paplay /usr/share/sounds/freedesktop/stereo/complete.oga
-}
+  echo -e "\nDone!"
 
+  # Desktop notification (if available)
+  command -v notify-send &>/dev/null && notify-send "⏰ Timer done ($input)"
+
+  # Sound (try a few options, then fall back to terminal bell)
+  if command -v paplay &>/dev/null; then
+    pactl set-sink-volume @DEFAULT_SINK@ 60%
+    paplay /usr/share/sounds/freedesktop/stereo/mybell.mp3
+  else
+    printf '\a'
+  fi
+}
 
 
 ###################################################################
