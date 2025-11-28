@@ -14,5 +14,5 @@ set mouse             # Enable mouse support (click to move cursor)
 set titlecolor white,black
 set statuscolor white,black
 set keycolor blue
-set functioncolor white
-set numbercolor white
+set functioncolor black,white
+set numbercolor black,white
