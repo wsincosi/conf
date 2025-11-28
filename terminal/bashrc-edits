@@ -203,17 +203,42 @@ fh() {
 timer() {
   local input=$1
   if [[ -z "$input" ]]; then
-    echo "Usage: timer <duration> (e.g. 1h30m, 5m, 90)"
+    echo "Usage: timer <duration|HH:MM> (e.g. 1h30m, 5m, 90, 16:45)"
     return 1
   fi
 
   local total_seconds=0
-  [[ $input =~ ([0-9]+)h ]] && (( total_seconds += ${BASH_REMATCH[1]} * 3600 ))
-  [[ $input =~ ([0-9]+)m ]] && (( total_seconds += ${BASH_REMATCH[1]} * 60 ))
-  [[ $input =~ ^[0-9]+$ ]] && (( total_seconds = 10#$input ))
 
-  if (( total_seconds == 0 )); then
-    echo "Invalid time format. Try 1h30m or 45m."
+  # --- New: absolute time like 16:45 ---
+  if [[ $input =~ ^([0-9]{1,2}):([0-9]{2})$ ]]; then
+    local hour=${BASH_REMATCH[1]}
+    local minute=${BASH_REMATCH[2]}
+
+    # Get current time (epoch seconds)
+    local now_ts
+    now_ts=$(date +%s) || { echo "Error: couldn't read current time"; return 1; }
+
+    # Today at HH:MM
+    local today target_ts
+    today=$(date +%Y-%m-%d)
+    target_ts=$(date -d "$today $hour:$minute:00" +%s 2>/dev/null) \
+      || { echo "Invalid time: $input"; return 1; }
+
+    # If that time has already passed today, use tomorrow
+    if (( target_ts <= now_ts )); then
+      target_ts=$(date -d "tomorrow $hour:$minute:00" +%s)
+    fi
+
+    total_seconds=$(( target_ts - now_ts ))
+  else
+    # --- Existing duration parsing (1h30m, 5m, 90s as seconds) ---
+    [[ $input =~ ([0-9]+)h ]] && (( total_seconds += ${BASH_REMATCH[1]} * 3600 ))
+    [[ $input =~ ([0-9]+)m ]] && (( total_seconds += ${BASH_REMATCH[1]} * 60 ))
+    [[ $input =~ ^[0-9]+$ ]] && (( total_seconds = 10#$input ))
+  fi
+
+  if (( total_seconds <= 0 )); then
+    echo "Invalid time. Use 1h30m, 45m, 90, or HH:MM like 16:45."
     return 1
   fi
 
