@@ -1,4 +1,7 @@
-k###################################################################
+###################################################################
+export LESS="--mouse"
+
+
 # History settings (Also, see HISTSIZE and HISTFILESIZE)
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 HISTTIMEFORMAT="%F %T "  # Outputs: YYYY-MM-DD HH:MM:SS
