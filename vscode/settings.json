@@ -75,7 +75,8 @@
     "editor.renderWhitespace": "none",
     "editor.lineNumbers": "on",
     "editor.cursorStyle": "block",
-    
+    "editor.cursorBlinking": "solid",
+     
     // Formatting with Ruff
     "ruff.importStrategy": "useBundled",
     "editor.defaultFormatter": "charliermarsh.ruff",
