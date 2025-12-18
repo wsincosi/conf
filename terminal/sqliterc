@@ -1,0 +1,15 @@
+-- Better output
+.headers on
+.mode column
+.nullvalue NULL
+
+-- Safer behavior
+PRAGMA foreign_keys = ON;
+
+-- Performance (reasonable defaults)
+PRAGMA journal_mode = WAL;
+PRAGMA synchronous = NORMAL;
+
+-- Show execution time
+.timer on
+
