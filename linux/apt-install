@@ -1,0 +1,10 @@
+sudo apt install p7zip-full
+sudo apt install nano
+sudo apt install tmux
+
+
+uv: curl -LsSf https://astral.sh/uv/install.sh | sh
+    ruff etc.
+code
+pip
+sage
