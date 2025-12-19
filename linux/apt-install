@@ -3,6 +3,7 @@ sudo apt install nano
 sudo apt install tmux
 sudo apt install bat
 sudo apt install -y python3-pip python3-venv
+sudp apt install clamav
 timer(): sudo apt install -y bash coreutils libnotify-bin pulseaudio-utils
 uv: curl -LsSf https://astral.sh/uv/install.sh | sh
     ruff etc.
