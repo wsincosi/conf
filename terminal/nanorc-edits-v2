@@ -1,0 +1,18 @@
+include /usr/share/nano/sh.nanorc
+include /usr/share/nano/python.nanorc
+include /usr/share/nano/perl.nanorc
+include /usr/share/nano/php.nanorc
+include /usr/share/nano/html.nanorc
+
+set tabsize 4
+set tabstospaces
+set autoindent        # Auto-indent new lines
+set constantshow      # Show cursor position always
+set linenumbers       # Show line numbers
+set mouse             # Enable mouse support (click to move cursor)
+
+set titlecolor white
+set statuscolor white
+set keycolor blue
+set functioncolor white
+set numbercolor white

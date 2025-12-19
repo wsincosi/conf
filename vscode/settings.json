@@ -18,10 +18,10 @@
     // "workbench.layoutControl.enabled": false,
     "workbench.colorCustomizations": {
     // "editorGroupHeader.tabsBackground": "#141414", // Background color of the tab bar
-    // "editor.background": "#141414", // Change this hex code to your desired color
+    "editor.background": "#f5f5f5", // Change this hex code to your desired color
     "editor.foreground": "#000000", // Text color
     "editorCursor.foreground": "#000000", // Cursor background color
-    // "sideBar.background": "#141414", // Sidebar background
+    "sideBar.background": "#f5f5f5", // Sidebar background
     // "activityBar.background": "#141414", // Activity bar (left bar)
     // "titleBar.activeBackground": "#141414", // Top title bar
     // "titleBar.inactiveBackground": "#141414", // Top title bar when window is
