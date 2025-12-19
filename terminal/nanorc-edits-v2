@@ -10,9 +10,18 @@ set autoindent        # Auto-indent new lines
 set constantshow      # Show cursor position always
 set linenumbers       # Show line numbers
 set mouse             # Enable mouse support (click to move cursor)
+set zap               # Allows you to highlight text (CTRL+SHIFT+ARROW) and delete it with backspace
+set minibar           # Displays file name and other information in the bottom bar. Removes top bar
+set positionlog       # Saves the cursor position between editing sessions
+set casesensitive     # Case insensitive search
 
 set titlecolor white
 set statuscolor white
 set keycolor blue
 set functioncolor white
 set numbercolor white
+
+# Enable and set a working backup directory
+# (mkdir -p ~/.cache/nano/backups/)
+set backup                              # Creates backups of your current file.
+set backupdir "~/.cache/nano/backups/"  # The location of the backups.

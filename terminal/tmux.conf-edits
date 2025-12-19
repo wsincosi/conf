@@ -1,2 +1,13 @@
 set -g mouse on
 set -g history-limit 100000
+
+# Disable bell and activity notifications
+set -g visual-activity off
+set -g visual-bell off
+set -g visual-silence off
+setw -g monitor-activity off
+set -g bell-action none
+
+# Colour pane borders
+set -g pane-border-style 'fg=black'
+set -g pane-active-border-style 'fg=green'
