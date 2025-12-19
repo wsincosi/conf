@@ -100,7 +100,7 @@
     "cmake.configureOnOpen": false,
 
     // Python
-    "python.defaultInterpreterPath": "/home/waara/sandbox-venv",
+    "python.defaultInterpreterPath": "/home/matlev/sandbox-venv",
     
     // Git
     "git.openRepositoryInParentFolders": "always",
@@ -108,7 +108,7 @@
     "gitlens.codeLens.recentChange.enabled": false,
     "gitlens.currentLine.enabled": false,
     "yaml.schemas": {
-        "file:///home/waara/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
+        "file:///home/matlev/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
     },
     "python.analysis.typeCheckingMode": "standard",
     "workbench.statusBar.visible": false,
