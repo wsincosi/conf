@@ -20,8 +20,3 @@ set statuscolor white
 set keycolor blue
 set functioncolor white
 set numbercolor white
-
-# Enable and set a working backup directory
-# (mkdir -p ~/.cache/nano/backups/)
-set backup                              # Creates backups of your current file.
-set backupdir "~/.cache/nano/backups/"  # The location of the backups.
