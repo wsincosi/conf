@@ -1,5 +1,6 @@
 sudo apt install p7zip-full
 sudo apt install nano
+sudo apt install tree
 sudo apt install tmux
 sudo apt install bat
 sudo apt install -y python3-pip python3-venv
