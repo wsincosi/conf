@@ -117,7 +117,7 @@ fi
 
 ##################################################
 # me
-export LESS="--mouse"
+export LESS="-R --mouse"
 
 # History settings (Also, see HISTSIZE and HISTFILESIZE)
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"

@@ -110,7 +110,6 @@
     "yaml.schemas": {
         "file:///home/matlev/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
     },
-    "workbench.iconTheme": "vscode-great-icons",
     "python.analysis.typeCheckingMode": "standard",
     "workbench.statusBar.visible": false,
     "workbench.layoutControl.enabled": false,
