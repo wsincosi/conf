@@ -70,8 +70,8 @@
     "editor.scrollbar.vertical": "hidden",
     "editor.scrollbar.horizontalScrollbarSize": 0,
     "editor.scrollbar.verticalScrollbarSize": 0,
-    "editor.fontFamily": "'Ubuntu Mono', 'Courier New', monospace",
-    "editor.fontSize": 19.5,
+    "editor.fontFamily": "'Ubuntu Mono'",
+    "editor.fontSize": 18,
     "editor.renderWhitespace": "none",
     "editor.lineNumbers": "on",
     "editor.cursorStyle": "block",
@@ -100,7 +100,7 @@
     "cmake.configureOnOpen": false,
 
     // Python
-    "python.defaultInterpreterPath": "/home/matlev/venv",
+    "python.defaultInterpreterPath": "/home/waara/sandbox-venv",
     
     // Git
     "git.openRepositoryInParentFolders": "always",
@@ -108,14 +108,13 @@
     "gitlens.codeLens.recentChange.enabled": false,
     "gitlens.currentLine.enabled": false,
     "yaml.schemas": {
-        "file:///home/matlev/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
+        "file:///home/waara/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
     },
     "python.analysis.typeCheckingMode": "standard",
     "workbench.statusBar.visible": false,
     "workbench.layoutControl.enabled": false,
-    "workbench.secondarySideBar.defaultVisibility": "visible",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
     "workbench.colorTheme": "Default Light Modern",
     "editor.inlineSuggest.enabled": false,
     "workbench.activityBar.location": "hidden"
-
 }

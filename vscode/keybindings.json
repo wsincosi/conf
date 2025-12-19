@@ -1,6 +1,18 @@
 // Place your key bindings in this file to override the defaults
 [
     {
+        "key": "ctrl+alt+right",
+        "command": "workbench.action.moveEditorToRightGroup"
+    },
+    {
+        "key": "ctrl+alt+left",
+        "command": "workbench.action.moveEditorToLeftGroup"
+    },
+    {
+        "key": "ctrl+alt+j",
+        "command": "workbench.action.joinAllGroups"
+    },
+    {
         "key": "ctrl+shift+right",
         "command": "deleteAllRight"
     },
@@ -39,22 +51,21 @@
         "value": 5
     },
     "when": "textInputFocus"
-},
-{
-    "key": "alt+right",
-    "command": "workbench.action.nextEditor"
-},
-{
-    "key": "ctrl+pagedown",
-    "command": "-workbench.action.nextEditor"
-},
-{
-    "key": "alt+left",
-    "command": "workbench.action.previousEditor"
-},
-{
-    "key": "ctrl+pageup",
-    "command": "-workbench.action.previousEditor"
-}
-
+    },
+    {
+        "key": "alt+right",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+pagedown",
+        "command": "-workbench.action.nextEditor"
+    },
+    {
+        "key": "alt+left",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "ctrl+pageup",
+        "command": "-workbench.action.previousEditor"
+    }
 ]
