@@ -13,7 +13,6 @@ set mouse             # Enable mouse support (click to move cursor)
 set zap               # Allows you to highlight text (CTRL+SHIFT+ARROW) and delete it with backspace
 set minibar           # Displays file name and other information in the bottom bar. Removes top bar
 set positionlog       # Saves the cursor position between editing sessions
-set casesensitive     # Case insensitive search
 
 set titlecolor white
 set statuscolor white
