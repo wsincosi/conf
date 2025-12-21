@@ -1,13 +1,19 @@
+sudo apt update
 sudo apt install p7zip-full
 sudo apt install nano
+sudo apt install git
 sudo apt install tree
 sudo apt install tmux
 sudo apt install bat
+sudo apt install fzf
+sudo apt install sqlite3
 sudo apt install -y python3-pip python3-venv
 sudp apt install clamav
 timer(): sudo apt install -y bash coreutils libnotify-bin pulseaudio-utils
-uv: curl -LsSf https://astral.sh/uv/install.sh | sh
-    ruff etc.
+curl -LsSf https://astral.sh/uv/install.sh | sh
+    uv tool install ruff
+    uv tool install ipython
+    ...
 code
 sage
 fly(?)
