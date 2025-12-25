@@ -116,5 +116,7 @@
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "workbench.colorTheme": "Default Light Modern",
     "editor.inlineSuggest.enabled": false,
-    "workbench.activityBar.location": "hidden"
+    "workbench.startupEditor": "none",
+    "workbench.activityBar.location": "hidden",
+    "chat.commandCenter.enabled": false
 }
