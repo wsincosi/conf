@@ -116,6 +116,9 @@
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "workbench.colorTheme": "Default Light Modern",
     "editor.inlineSuggest.enabled": false,
+    "editor.bracketPairColorization.enabled": false,
+    "editor.guides.bracketPairs": false,
+    "editor.smoothScrolling": false,
     "workbench.startupEditor": "none",
     "workbench.activityBar.location": "hidden",
     "chat.commandCenter.enabled": false
