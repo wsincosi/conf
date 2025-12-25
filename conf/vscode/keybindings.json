@@ -1,11 +1,11 @@
 // Place your key bindings in this file to override the defaults
 [
     {
-        "key": "alt+shift+1",
+        "key": "alt+shift+left",
         "command": "workbench.action.focusFirstEditorGroup"
     },
     {
-        "key": "alt+shift+2",
+        "key": "alt+shift+right",
         "command": "workbench.action.focusSecondEditorGroup"
     },
     {
