@@ -15,12 +15,12 @@
         "*.pdf": "latex-workshop-pdf-hook"
     },
     "workbench.statusBar.visible": false,
+    "workbench.list.smoothScrolling": false,
     "workbench.tree.indent": 40,
     "workbench.editor.showTabs": "multiple",
     "workbench.layoutControl.enabled": false,
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "workbench.colorTheme": "Default Light Modern",
-    "workbench.activityBar.location": "hidden",
     "workbench.startupEditor": "none",
     "workbench.colorCustomizations": {
         "editor.background": "#f5f5f5", // Change this hex code to your desired color
@@ -126,5 +126,6 @@
     "gitlens.currentLine.enabled": false,
 
     // Misc
-    "chat.commandCenter.enabled": false
+    "chat.commandCenter.enabled": false,
+    "workbench.activityBar.location": "hidden"
 }
