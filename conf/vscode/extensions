@@ -1,19 +1,15 @@
 # code --list-extensions
 
 autodocstring
-better comments
 codex
 drawio
-even better toml
 github copilot
 jupyter
-path intellisense
-python
-restructuredtext
 ruff
 tabout
 remote ssh
 latex workshop
 
+python
 c++ / cmake
 rust
