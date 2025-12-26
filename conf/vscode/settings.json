@@ -14,6 +14,8 @@
     "workbench.editorAssociations": {
         "*.pdf": "latex-workshop-pdf-hook"
     },
+    "workbench.enableExperiments": false,
+    "workbench.reduceMotion": "on",
     "workbench.statusBar.visible": false,
     "workbench.list.smoothScrolling": false,
     "workbench.tree.indent": 40,
@@ -26,7 +28,7 @@
         "editor.background": "#f5f5f5", // Change this hex code to your desired color
         "editor.foreground": "#000000", // Text color
         "editorCursor.foreground": "#000000", // Cursor background color
-        "sideBar.background": "#f5f5f5", // Sidebar background
+        "sideBar.background": "#f5f5f5" // Sidebar background
         // "editorGroupHeader.tabsBackground": "#141414", // Background color of the tab bar
         // "activityBar.background": "#141414", // Activity bar (left bar)
         // "titleBar.activeBackground": "#141414", // Top title bar
@@ -72,6 +74,7 @@
 
     // Editor
     "editor.minimap.enabled": false,
+    "editor.cursorSmoothCaretAnimation": "off",
     "editor.hideCursorInOverviewRuler": true,
     "editor.scrollbar.horizontal": "hidden",
     "editor.scrollbar.vertical": "hidden",
@@ -110,6 +113,7 @@
 
     // Terminal
     "terminal.integrated.gpuAcceleration": "on",
+    "terminal.integrated.smoothScrolling": false,
     "terminal.integrated.enableImages": true,
 
     // CMake
