@@ -9,6 +9,7 @@
     // Window
     "window.menuBarVisibility": "toggle",
     "window.commandCenter": false,
+    "window.zoomLevel": 0,
 
     // Workbench
     "workbench.editorAssociations": {
@@ -131,5 +132,5 @@
 
     // Misc
     "chat.commandCenter.enabled": false,
-    "workbench.activityBar.location": "hidden"
+    "workbench.activityBar.location": "hidden",
 }
