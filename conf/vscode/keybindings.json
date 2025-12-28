@@ -1,6 +1,10 @@
 // Place your key bindings in this file to override the defaults
 [
     {
+        "key": "ctrl+alt+shift+right",
+        "command": "workbench.action.splitEditorRight"
+    },
+    {
         "key": "ctrl+d",
         "command": "editor.action.revealDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus"
