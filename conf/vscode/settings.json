@@ -21,6 +21,7 @@
     "workbench.list.smoothScrolling": false,
     "workbench.tree.indent": 40,
     "workbench.editor.showTabs": "multiple",
+    "workbench.editor.enablePreview": false,
     "workbench.layoutControl.enabled": false,
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "workbench.colorTheme": "Default Light Modern",
@@ -132,5 +133,4 @@
 
     // Misc
     "chat.commandCenter.enabled": false,
-    "workbench.activityBar.location": "hidden",
 }
