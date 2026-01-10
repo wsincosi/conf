@@ -1,6 +1,10 @@
 // Place your key bindings in this file to override the defaults
 [
     {
+        "key": "ctrl+tab",
+        "command": "workbench.action.openPreviousRecentlyUsedEditor"
+    },
+    {
         "key": "ctrl+alt+shift+right",
         "command": "workbench.action.splitEditorRight"
     },
