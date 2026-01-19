@@ -94,7 +94,7 @@
     "editor.smoothScrolling": false,
     "editor.codeLens": false,
     "editor.lightbulb.enabled": "off",
-    "editor.glyphMargin": false,
+    "editor.glyphMargin": false, //incl. breakpoints
     "editor.peekWidgetDefaultFocus": "editor",
     "editor.hover.enabled": "off",
      
