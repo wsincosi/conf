@@ -9,6 +9,8 @@ sudo apt install fzf
 sudo apt install sqlite3
 sudo apt install -y python3-pip python3-venv
 sudp apt install clamav
+sudo apt install latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+
 timer(): sudo apt install -y bash coreutils libnotify-bin pulseaudio-utils
 curl -LsSf https://astral.sh/uv/install.sh | sh
     uv tool install ruff
