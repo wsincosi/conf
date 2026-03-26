@@ -1,0 +1,11 @@
+(reverse-i-search)`puppet': puppet apply -e "class { 'yoyo':
+  instance_name => 'xyz',
+  local_imports => ['coffee', 'tea'],
+  host          => 'host-01',
+  base_dir      => '/tmp/yoyo-test',
+  config_path   => '/tmp/yoyo-test.conf',
+}"   --modulepath=/home/matlev/projects/learn-puppet/modules   --vardir=/tmp/puppetcache
+
+
+
+puppet apply /home/matlev/projects/learn-puppet/site.pp   --modulepath=/home/matlev/projects/learn-puppet/modules   --hiera_config=/home/matlev/projects/learn-puppet/hiera.yaml
