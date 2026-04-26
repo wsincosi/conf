@@ -1,0 +1,9 @@
+# This tells the shared yoyo framework which concrete instance
+# is running on this node.
+yoyo::instance_name: 'xyz'
+
+# This tells the shared yoyo framework which local-import
+# directories/config entries should exist on this node.
+yoyo::local_imports:
+  - coffee
+  - tea

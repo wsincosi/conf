@@ -1,0 +1,23 @@
+version: 5
+
+defaults:
+  # All Hiera data files are looked up under the "data" directory
+  datadir: data
+
+  # Tells Puppet that YAML files contain normal key/value data
+  data_hash: yaml_data
+
+hierarchy:
+  - name: "Per-node data"
+
+    # %{facts.networking.hostname} means:
+    # take the current machine hostname fact and insert it here.
+    #
+    # Example:
+    # if hostname = host-01, Puppet looks for:
+    # data/nodes/host-01.yaml
+    #
+    # if hostname = penguin, Puppet looks for:
+    # data/nodes/penguin.yaml
+    #path: "nodes/%{facts.networking.hostname}.yaml"
+    path: "nodes/host-01.yaml"
