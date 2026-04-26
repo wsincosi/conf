@@ -31,7 +31,7 @@ class yoyo (
   #
   # Defaults to the current node hostname, but can be overridden
   # during local testing to simulate other hosts.
-  String $host = $facts['hostname'],
+  String $host = $facts['networking']['hostname'],
 ) {
 
   # Build the instance root path.
