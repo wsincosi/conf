@@ -22,7 +22,7 @@
     "workbench.list.smoothScrolling": false,
     "workbench.tree.indent": 40,
     "workbench.editor.showTabs": "multiple",
-    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreview": false, 
     "workbench.layoutControl.enabled": false,
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "workbench.startupEditor": "none",
@@ -30,20 +30,20 @@
         "editor.background": "#f5f5f5", // Change this hex code to your desired color
         "editor.foreground": "#000000", // Text color
         "editorCursor.foreground": "#000000", // Cursor background color
-        "sideBar.background": "#f5f5f5" // Sidebar background,
-        // "editorGroupHeader.tabsBackground": "#f5f5f5", // Background color of the tab bar
+        "sideBar.background": "#f5f5f5", // Sidebar background,
+        "editorGroupHeader.tabsBackground": "#f5f5f5", // Background color of the tab bar
+        "tab.activeBackground": "#cdcdcd3b", // Active tab background
+        "tab.inactiveBackground": "#f5f5f5" // Inactive tab background
         // "activityBar.background": "#141414", // Activity bar (left bar)
         // "titleBar.activeBackground": "#141414", // Top title bar
         // "titleBar.inactiveBackground": "#141414", // Top title bar when window is
         // "panel.background": "#141414", // Bottom panel (terminal, problems, output, etc.)
-        // "tab.activeBackground": "#262626", // Active tab background
-        // "tab.inactiveBackground": "#141414", // Inactive tab background
         // "tab.border": "#141414", // Tab border
-        // "tab.activeBorder": "#141414", // Active tab border
+        // "tab.activeBorder": "#1133bb", // Active tab border
         // "tab.activeBorderTop": "#141414", // Active tab top border
-        // "tab.inactiveBorder": "#141414", // Inactive tab border
+        // "tab.inactiveBorder": "#f5f5f5", // Inactive tab border
         // "tab.hoverBackground": "#1A1A1A", // Tab hover background
-        // "tab.unfocusedHoverBackground": "#1A1A1A", // Tab hover
+        // "tab.unfocusedHoverBackground": "#f5f5f5", // Tab hover
         // "panel.border": "#141414", // Bottom panel border
         // "panelTitle.activeBorder": "#007ACC", // Bottom panel title border
         // "panelTitle.activeForeground": "#FFFFFF", // Bottom panel title text color
@@ -73,9 +73,6 @@
     "latex-workshop.latex.recipe.default": "latexmk",
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.autoBuild.run": "onSave",
-
-    // Editor
-    "editor.minimap.enabled": false,
     "editor.cursorSmoothCaretAnimation": "off",
     "editor.hideCursorInOverviewRuler": true,
     "editor.scrollbar.horizontal": "hidden",
@@ -140,4 +137,5 @@
     "apklab.jadxDirPath": "/home/matlev/.apklab/jadx-1.5.3",
     "workbench.colorTheme": "Visual Studio Light",
     "workbench.activityBar.location": "hidden",
+    "editor.minimap.enabled": false
 }
