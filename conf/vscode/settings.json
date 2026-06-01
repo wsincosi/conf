@@ -29,7 +29,7 @@
         "editorCursor.foreground": "#000000", // Cursor background color
         "sideBar.background": "#f5f5f5", // Sidebar background,
         "editorGroupHeader.tabsBackground": "#f5f5f5", // Background color of the tab bar
-        "tab.activeBackground": "#cdcdcd3b", // Active tab background
+        "tab.activeBackground": "#9c9c9c3b", // Active tab background
         "tab.inactiveBackground": "#f5f5f5", // Inactive tab background
         // "activityBar.background": "#141414", // Activity bar (left bar)
         // "titleBar.activeBackground": "#141414", // Top title bar
@@ -77,7 +77,7 @@
     "editor.scrollbar.horizontalScrollbarSize": 0,
     "editor.scrollbar.verticalScrollbarSize": 0,
     "editor.fontFamily": "'Ubuntu Mono'",
-    "editor.fontSize": 18,
+    "editor.fontSize": 17,
     "editor.renderWhitespace": "none",
     "editor.lineNumbers": "on",
     "editor.cursorStyle": "block",
