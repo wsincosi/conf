@@ -116,25 +116,5 @@
         "key": "ctrl+backspace",
         "command": "-deleteWordLeft",
         "when": "textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+f",
-        "command": "editor.action.startFindReplaceAction",
-        "when": "editorFocus || editorIsOpen"
-    },
-    {
-        "key": "ctrl+h",
-        "command": "-editor.action.startFindReplaceAction",
-        "when": "editorFocus || editorIsOpen"
-    },
-    {
-        "key": "ctrl+shift+f",
-        "command": "workbench.action.replaceInFiles",
-        "when": "!isSessionsWindow"
-    },
-    {
-        "key": "ctrl+shift+h",
-        "command": "-workbench.action.replaceInFiles",
-        "when": "!isSessionsWindow"
     }
 ]
