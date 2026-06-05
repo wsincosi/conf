@@ -24,10 +24,12 @@
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "workbench.startupEditor": "none",
     "workbench.colorCustomizations": {
-        "editor.background": "#f5f5f5", // Change this hex code to your desired color
+        // f5f5f5
+        // fbf7f1
+        "editor.background": "#fbf7f1", // Change this hex code to your desired color
         "editor.foreground": "#000000", // Text color
         "editorCursor.foreground": "#000000", // Cursor background color
-        "sideBar.background": "#f5f5f5", // Sidebar background,
+        "sideBar.background": "#fbf7f1", // Sidebar background,
         "editorGroupHeader.tabsBackground": "#f5f5f5", // Background color of the tab bar
         "tab.activeBackground": "#9c9c9c3b", // Active tab background
         "tab.inactiveBackground": "#f5f5f5", // Inactive tab background
@@ -134,7 +136,8 @@
     "apklab.jadxDirPath": "/home/matlev/.apklab/jadx-1.5.3",
     "workbench.colorTheme": "Visual Studio Light",
     "editor.minimap.enabled": false,
-    "workbench.activityBar.location": "hidden",
     "workbench.browser.showInTitleBar": false,
-    "window.menuBarVisibility": "compact"
+    "window.menuBarVisibility": "compact",
+    "workbench.activityBar.location": "hidden",
+    "chatgpt.localeOverride": "en-US"
 }
