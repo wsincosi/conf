@@ -5,9 +5,11 @@
 
     // Disable Telemetry
     "telemetry.telemetryLevel": "off",
+
+    // Window
     "window.commandCenter": false,
     "window.zoomLevel": 0,
-    "breadcrumbs.enabled": false,
+
 
     // Workbench
     "workbench.editorAssociations": {
@@ -72,6 +74,8 @@
     "latex-workshop.latex.recipe.default": "latexmk",
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.autoBuild.run": "onSave",
+
+    // Editors
     "editor.cursorSmoothCaretAnimation": "off",
     "editor.hideCursorInOverviewRuler": true,
     "editor.scrollbar.horizontal": "hidden",
@@ -93,6 +97,64 @@
     "editor.glyphMargin": false,
     "editor.peekWidgetDefaultFocus": "editor",
     "editor.hover.enabled": "off",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.tokenColorCustomizations": {
+        "[Light Modern]": {
+            "textMateRules": [
+                {
+                    "scope": [
+                        "constant.other.caps.python",
+                    ],
+                    "settings": {
+                        "fontStyle": "underline"
+                    }
+                },
+                {
+                    "scope": [
+                    "keyword.control",
+                    "keyword.control.flow",
+                    "keyword.control.conditional",
+                    "keyword.control.loop",
+                    "keyword.control.return"
+                    ],
+                    "settings": {
+                    "foreground": "#0000FF"
+                    }
+                },
+                {
+                    "scope": [
+                        "constant.language.python"
+                    ],
+                    "settings": {
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": [
+                        // Python keywords / control flow
+                        "keyword.control.python",
+                        "keyword.control.flow.python",
+                        "keyword.control.import.python",
+                        "keyword.control.conditional.python",
+                        "keyword.control.repeat.python",
+                        "keyword.control.exception.python",
+                        "keyword.operator.logical.python",
+
+                        // async / def / class / global / nonlocal
+                        "storage.type.function.python",
+                        "storage.type.function.async.python",
+                        "storage.modifier.async.python",
+                        "storage.type.class.python",
+                        "storage.modifier.declaration.python"
+                    ],
+                    "settings": {
+                        "foreground": "#0000FF",
+                        "fontStyle": "bold"
+                    }
+                },
+            ]
+        }
+    },
      
     // Ruff
     "ruff.importStrategy": "useBundled",
@@ -106,7 +168,7 @@
     },
     //"files.autoSave": "onFocusChange",
 
-    // Docstring format
+    // Docstring
     "autoDocstring.docstringFormat": "google-notypes",
 
     // Terminal
@@ -127,14 +189,15 @@
     "gitlens.codeLens.recentChange.enabled": false,
     "gitlens.currentLine.enabled": false,
 
-    // Misc
+    // Misc / Toggle
     "chat.commandCenter.enabled": false,
+    "breadcrumbs.enabled": false,
     "extensions.ignoreRecommendations": true,
     "apklab.apktoolPath": "/home/matlev/.apklab/apktool_3.0.2.jar",
     "apklab.smaliLspPath": "/home/matlev/.apklab/smali-lsp-1.5.0.jar",
     "apklab.apkSignerPath": "/home/matlev/.apklab/uber-apk-signer-1.3.0.jar",
     "apklab.jadxDirPath": "/home/matlev/.apklab/jadx-1.5.3",
-    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.colorTheme": "Light Modern",
     "editor.minimap.enabled": false,
     "workbench.browser.showInTitleBar": false,
     "window.menuBarVisibility": "compact",
