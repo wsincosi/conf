@@ -35,6 +35,9 @@
         "editorGroupHeader.tabsBackground": "#f5f5f5", // Background color of the tab bar
         "tab.activeBackground": "#9c9c9c3b", // Active tab background
         "tab.inactiveBackground": "#f5f5f5", // Inactive tab background
+        "editorLineNumber.foreground": "#949494",
+        "editorLineNumber.activeForeground": "#949494",
+        "editorGutter.background": "#fbf7f1"
         // "activityBar.background": "#141414", // Activity bar (left bar)
         // "titleBar.activeBackground": "#141414", // Top title bar
         // "titleBar.inactiveBackground": "#141414", // Top title bar when window is
