@@ -1,0 +1,36 @@
+Make it executable:
+chmod +x ~/.local/bin/watch-new-files.py
+
+
+
+Create ~/.config/systemd/user/new-file-watcher.service:
+[Unit]
+Description=Watch directory for new files and run curl
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/watch-new-files.py
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=default.target
+
+
+
+Enable and start it:
+systemctl --user daemon-reload
+systemctl --user enable --now new-file-watcher.service
+systemctl --user status new-file-watcher.service
+
+
+Check logs:
+journalctl --user -u new-file-watcher.service -f
+
+
+Then check whether it can survive logout/reboot:
+loginctl show-user "$USER" --property=Linger
+
+
+If it says Linger=no, ask the machine admin to run:
+sudo loginctl enable-linger yourusername
